@@ -1,0 +1,51 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+﻿@using PustokMVC.ViewModels.BasketVM
+@model List<BasketProductItemVM>
+<div class="cart-block">
+    <div class="cart-total">
+        <span class="text-number">
+            @Model.Sum(x=>x.Count)
+        </span>
+        <span class="text-item">
+            Shopping Cart
+        </span>
+        <span class="price">
+            £0.00
+            <i class="fas fa-chevron-down"></i>
+        </span>
+    </div>
+    <div class="cart-dropdown-block">
+        <div class=" single-cart-block ">
+            <div class="cart-product">
+                <a href="product-details.html" class="image">
+                    <img src="~/image/products/cart-product-1.jpg" alt="">
+                </a>
+                <div class="content">
+                    @foreach (var item in Model)
+                    {
+                        <div class="cart-item">
+                            <div class="thumb">
+                                <a href="#/"><img class="w-100" src="~/@item.ImageUrl" alt="Image-HasTech"></a>
+                                <a class="remove" asp-action="RemoveBasket" asp-controller="Product" asp-route-id="@item.Id"><i class="fa fa-trash-o"></i></a>
+                            </div>
+                            <div class="content">
+                                <h5 class="title"><a href="#/">@item.Title</a></h5>
+                                <span>@item.Count x $ @item.Price</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class=" single-cart-block ">
+            <div class="btn-block">
+                <a href="cart.html" class="btn">
+                    View Cart <i class="fas fa-chevron-right"></i>
+                </a>
+                <a href="checkout.html" class="btn btn--primary">
+                    Check Out <i class="fas fa-chevron-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

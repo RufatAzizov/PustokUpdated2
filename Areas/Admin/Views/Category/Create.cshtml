@@ -1,0 +1,22 @@
+﻿@using PustokMVC.ViewModels.CategoryVM;
+@model CategoryCreateVM
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using PustokMVC.Models;
+@{
+    ViewData["Title"] = "Create";
+}
+
+   <div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Add new category</h6>
+
+    </div>
+    <div class="card-body">
+        <form asp-action="Create" method="post">
+            <div class="form-group">
+                <label asp-for="Name">Title</label>
+                <input asp-for="Name" type="text" class="form-control" name="Title" />
+            </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+

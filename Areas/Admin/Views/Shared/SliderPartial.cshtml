@@ -1,0 +1,62 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<div class="table-responsive">
+    <td> <a asp-action="Create" class="btn btn-outline-success space-db--100">Create Slider</a></td>
+
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <tread>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>ImageURL</th>
+            <th>IsRight</th>
+            <th cosplan="2">Action</th>
+            <th cosplan="2">Delete</th>
+        </tread>
+        <tbody>
+            @if (Model != null)
+            {
+                @foreach (var item in Model)
+                {
+
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Title</td>
+                        <td>@item.Description</td>
+                        <td>@item.Price</td>
+                        <td><img src="@item.ImageURL" /></td>
+                        <td>@(item.IsRight == true ? "right" : "left")</td>
+                        <td><a class="btn btn-outline-info" asp-action="Update" asp-route-id="@item.Id">Update</a></td>
+                        <td><a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a></td>
+                    </tr>
+
+                }
+            <td class="text-center" colspan="8">
+                <div id="table-container">
+                </div>
+                <div class="table-actions">
+                    <button id="load-more">Load more</button>
+                </div>
+            </td>
+            <script>
+                var page = 2;
+                var pageSize = 5;
+                $.ajax({
+                    url: ""
+                })
+            </script>
+            }
+            else
+            {
+            <tr>
+                <td class="text-center" colspan="4">No Data</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+    
